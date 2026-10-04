@@ -1,0 +1,20 @@
+[Unit]
+Description=Bale Legal Case Bot - بازوی پیگیری کیس‌های حقوقی
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+# نام کاربر و مسیر پروژه را متناسب با سیستم خود تغییر دهید
+User=YOUR_USERNAME
+WorkingDirectory=/path/to/legal_case/bot
+Environment="BALE_BOT_TOKEN=YOUR_TOKEN_HERE"
+Environment="LOG_LEVEL=INFO"
+ExecStart=/path/to/legal_case/bot/.venv/bin/python bot.py
+Restart=always
+RestartSec=10
+StandardOutput=append:/path/to/legal_case/bot/logs/bot.log
+StandardError=append:/path/to/legal_case/bot/logs/bot.log
+
+[Install]
+WantedBy=multi-user.target
